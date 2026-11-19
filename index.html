@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PAWCARE – Every Paw Deserves Love & Care</title>
+<meta name="description" content="Pet care tracking and stray animal welfare community platform.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐾%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css"></head><body>
+<header class="nav"><a class="brand" href="#home">🐾 PAWCARE</a>
+<nav id="menu"><a href="#home">Home</a><a href="#dashboard">My Pets</a><a href="#stray">Help a Stray</a><a href="#adopt">Adopt</a><a href="#volunteer">Volunteer</a><a href="#donate">Donate</a><a href="#impact">Impact</a></nav>
+<button id="theme" class="icon" aria-label="Toggle dark mode">🌙</button><button id="menuBtn" class="icon" aria-label="Menu">☰</button></header>
+<main>
+<section id="home" class="page">
+ <div class="hero"><div><span class="tag">Every Paw Deserves Love & Care</span><h1>Care for Your Pets.<br><em>Be a Hero for Strays.</em></h1>
+ <p>Track your pet's feeding, vaccinations and vet visits — and join a community that feeds, rescues and rehomes street animals.</p>
+ <div class="row"><a class="btn" href="#dashboard">Get Started</a><a class="btn alt" href="#stray">Explore Stray Support</a></div></div>
+ <div class="heroimg"><img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=700&q=70" alt="Happy dog" onerror="fb(this)"></div></div>
+ <div class="grid2 wrap"><div class="card pad"><h2>🐶 For Pet Owners</h2><p>Create pet profiles, schedule meals, record vaccines and get reminders for grooming and vet visits.</p><a class="btn sm" href="#dashboard">Open dashboard</a></div>
+ <div class="card pad"><h2>🧡 For Strays</h2><p>Report an animal in need, see what others reported, and volunteer to help with food, water, medical aid or rescue.</p><a class="btn sm" href="#stray">Help a stray</a></div></div>
+ <div class="wrap"><h2>Featured dogs for adoption <small class="mut">(demo data)</small></h2><div class="grid3" id="featured"></div></div>
+ <div class="wrap"><h2>Community impact <small class="mut">(demo statistics)</small></h2><div class="stats" id="homeStats"></div></div>
+ <div class="wrap cta"><h2>Become a volunteer</h2><p>An hour a week can change a life.</p><a class="btn alt" href="#volunteer">Join the team</a></div>
+ <div class="wrap"><h2>What people say <small class="mut">(sample testimonials)</small></h2><div class="grid3">
+ <blockquote class="card pad">“The feeding tracker keeps my beagle on schedule.” <b>– Aarav, pet owner</b></blockquote>
+ <blockquote class="card pad">“Reported a hurt puppy and a volunteer was there within the hour.” <b>– Meera, Jaipur</b></blockquote>
+ <blockquote class="card pad">“We found our family dog here.” <b>– Rohan, adopter</b></blockquote></div></div>
+</section>
+
+<section id="dashboard" class="page wrap" hidden><h1>Pet Care Dashboard</h1>
+ <div class="grid2"><form id="petForm" class="card pad" novalidate><h2 id="petFormTitle">Add a pet</h2><input type="hidden" name="pid">
+ <label>Name<input name="name" required maxlength="30"></label><label>Age (years)<input name="age" type="number" step="0.5" required></label>
+ <label>Breed<input name="breed" required maxlength="40"></label><label>Photo (optional)<input name="photo" type="file" accept="image/*"></label>
+ <div class="row"><button class="btn">Save pet</button><button type="button" class="btn ghost" data-a="petReset">Cancel</button></div></form>
+ <div><h2>My pets</h2><div id="petList" class="list"></div></div></div>
+ <div id="petDetail" class="card pad" hidden><h2 id="detailTitle"></h2>
+ <form id="recForm" class="grid4" novalidate><label>Type<select name="type"><option>Feeding</option><option>Vaccination</option><option>Grooming</option><option>Vet visit</option></select></label>
+ <label>Date<input type="date" name="date" required></label><label>Time (optional)<input type="time" name="time"></label><label>Note<input name="note" maxlength="80" placeholder="e.g. 1 cup dry food"></label>
+ <button class="btn sm">Add record / reminder</button></form>
+ <p class="mut">Future dates appear as reminders; past dates become care history.</p><h3>⏰ Upcoming reminders</h3><div id="upcoming" class="list"></div><h3>📖 Care history</h3><div id="history" class="list"></div></div>
+</section>
+
+<section id="stray" class="page wrap" hidden><h1>Help a Stray</h1>
+ <div class="warn">⚠️ <b>Safety:</b> Do not approach injured, frightened or aggressive animals. Contact a qualified veterinarian or local animal welfare organization for assistance.</div>
+ <div class="grid2"><form id="strayForm" class="card pad" novalidate><h2>Report an animal</h2>
+ <label>Animal<select name="animal"><option>Dog</option><option>Puppy</option><option>Cat</option><option>Other</option></select></label>
+ <label>Help needed<select name="help"><option>Food</option><option>Water</option><option>Medical assistance</option><option>Rescue</option></select></label>
+ <label>Urgency<select name="urgency"><option>Low</option><option>Medium</option><option>High</option></select></label>
+ <label>Location<input name="loc" required maxlength="80" placeholder="Street, landmark, city"></label>
+ <label>Description<textarea name="desc" required maxlength="300" rows="3"></textarea></label><label>Photo (optional)<input name="photo" type="file" accept="image/*"></label>
+ <button class="btn">Submit report</button></form>
+ <div><div class="row between"><h2>Community help feed</h2><select id="strayFilter"><option value="">All</option><option value="open">Open</option><option value="handling">Being handled</option><option value="resolved">Resolved</option></select></div><div id="strayFeed" class="list"></div></div></div>
+</section>
+
+<section id="volunteer" class="page wrap" hidden><h1>Volunteer with PAWCARE</h1>
+ <div class="grid4"><div class="card pad">🍲<h3>Feeding</h3><p class="mut">Daily food & water runs.</p></div><div class="card pad">🚑<h3>Rescue support</h3><p class="mut">Transport & first response.</p></div><div class="card pad">🏠<h3>Adoption support</h3><p class="mut">Home visits & matching.</p></div><div class="card pad">🩺<h3>Medical coordination</h3><p class="mut">Link animals with vets.</p></div></div>
+ <form id="volForm" class="card pad narrow" novalidate><label>Name<input name="name" required></label><label>Email<input name="email" type="email" required></label><label>City<input name="city" required></label>
+ <label>Preferred activity<select name="role"><option>Feeding volunteer</option><option>Rescue support volunteer</option><option>Adoption support volunteer</option><option>Medical assistance coordinator</option></select></label>
+ <label>Availability<select name="avail"><option>Weekday mornings</option><option>Weekday evenings</option><option>Weekends</option><option>Flexible</option></select></label><button class="btn">Register</button></form>
+</section>
+
+<section id="adopt" class="page wrap" hidden><h1>Adoption Center</h1><p class="mut">All profiles are <b>demonstration data</b>.</p>
+ <div class="row"><input id="q" placeholder="Search name, breed, location…" aria-label="Search"><select id="ageF"><option value="">All ages</option><option>Puppy</option><option>Young</option><option>Adult</option></select></div>
+ <div class="grid3" id="dogs"></div></section>
+
+<section id="donate" class="page wrap" hidden><h1>Donation & Food Support</h1>
+ <div class="warn">ℹ️ Offers are recorded locally for demonstration. No payments are processed and no donations are received through this demo.</div>
+ <div class="grid3"><div class="card pad">🍖<h3>Food donation</h3><p class="mut">Dry food, rice & milk for community feeders.</p></div><div class="card pad">💧<h3>Water bowl support</h3><p class="mut">Place or refill bowls in summer.</p></div><div class="card pad">💊<h3>Medical supplies</h3><p class="mut">Bandages, antiseptic, tick treatments.</p></div></div>
+ <form id="donForm" class="card pad narrow" novalidate><label>I would like to offer<select name="kind"><option>Food donation</option><option>Water bowl support</option><option>Medical supply support</option></select></label>
+ <label>Name<input name="name" required></label><label>Email<input name="email" type="email" required></label><label>Details<textarea name="note" rows="3" required placeholder="What can you contribute and where?"></textarea></label><button class="btn">Submit offer</button></form></section>
+
+<section id="impact" class="page wrap" hidden><h1>Community Impact</h1><p class="mut">Demo statistics (seed values + your local submissions) until verified data is connected.</p><div class="stats" id="impactStats"></div></section>
+</main>
+<footer><b>🐾 PAWCARE</b> — Every Paw Deserves Love & Care. Demo project; data is stored only in your browser.</footer>
+<dialog id="adoptDlg"><form id="adoptForm" novalidate><h2 id="adoptTitle"></h2><input type="hidden" name="dog"><label>Your name<input name="name" required></label><label>Email<input name="email" type="email" required></label><label>City<input name="city" required></label>
+<label>Why would you be a good home?<textarea name="why" rows="3" required></textarea></label><div class="row"><button class="btn">Send application</button><button type="button" class="btn ghost" data-a="close">Cancel</button></div></form></dialog>
+<div id="toasts" aria-live="polite"></div>
+<script src="app.js"></script></body></html>
